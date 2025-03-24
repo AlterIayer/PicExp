@@ -1,0 +1,19 @@
+nav {
+    padding: 156px; /* Ajusta según la altura de tu navbar */
+  }
+#Paginacion
+{  
+  padding: 10px !important; /* Ajusta según la altura de tu navbar */
+}
+#buscar_ben
+{
+  margin-left: 20px !important; /* Ajusta según la altura de tu navbar */
+}
+#Modificar::after
+{
+  content: " 🛠️";
+}
+#AgregarFoto::after
+{
+  content: " 📷";
+}
