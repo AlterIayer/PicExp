@@ -27,13 +27,20 @@
 // <!-- Exportar documento Word -->
 
     $(function () {
-        $(".ExportToWord").click(function (event) {
-            if (Convertir())
-            {
-                $("#content").wordExport();
-            }
-            else{alert("Error al validar los datos.")}
-        });
+        if (Convertir()) {
+            $("#content").wordExport();
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'El documento se ha generado correctamente.',
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al validar los datos.',
+            });
+        }
     });
 
     function Convertir()

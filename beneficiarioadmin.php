@@ -70,6 +70,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <th>Teléfono 2</th>
                             <th>Fecha de Nac.</th>
                             <th></th>
+                            <th>Agregar Fotos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +85,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Modificar</button>
                                 </td>
                                 <td>
-                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" class="btn btn-success btn-sm">Agregar Fotos</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" class="btn btn-success btn-sm">Espiritual</button></a>
                                 </td>
                             </tr>
                         <?php } ?>
