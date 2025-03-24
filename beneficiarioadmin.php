@@ -41,6 +41,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <br>
+<!-- // Inicializar tooltips de Bootstrap -->
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -85,7 +92,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Modificar</button>
                                 </td>
                                 <td>
-                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" class="btn btn-success btn-sm">Espiritual</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Espiritual" class="btn btn-success">🙏</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Física" class="btn btn-success">🤸</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cognitiva" class="btn btn-success">🧩</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Socioemocional" class="btn btn-success">😊</button></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -118,9 +128,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<script>
-
-</script>
 
 <script src="js/upload.js"></script>
 <?php include 'modal.php'; ?>

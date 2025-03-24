@@ -15,5 +15,5 @@ nav {
 }
 #AgregarFoto::after
 {
-  content: " 📷";
+  content: " ";
 }

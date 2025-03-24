@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Agregar evento al botón Guardar Cambios
-    guardarCambiosBtn.addEventListener("click", function () {
+    guardarCambios.addEventListener("click", function () {
         const telefono1 = document.getElementById("telefono1-ben").value.trim();
         const telefono2 = document.getElementById("telefono2-ben").value.trim();
     
