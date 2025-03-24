@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
     
-        // Realizar solicitud AJAX para actualizar los datos
+        // Realizar solicitud AJAX para actualizar los datoss
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "actualizar_beneficiario.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -122,3 +122,4 @@ function validarTelefono(telefono) {
     const primerDigito = telefono.charAt(0);
     return ['2', '6', '7'].includes(primerDigito);
 }
+});
