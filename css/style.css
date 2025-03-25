@@ -9,11 +9,3 @@ nav {
 {
   margin-left: 20px !important; /* Ajusta según la altura de tu navbar */
 }
-#Modificar::after
-{
-  content: " 🛠️";
-}
-#AgregarFoto::after
-{
-  content: " ";
-}

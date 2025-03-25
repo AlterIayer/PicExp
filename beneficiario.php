@@ -43,6 +43,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 <br>
+<!-- // Inicializar tooltips de Bootstrap -->
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -51,7 +58,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="input-group">
                     <input type="text" name="buscar" class="form-control" placeholder="Buscar por Código o Nombre" value="<?php echo htmlspecialchars($terminoBusqueda); ?>">
                     <div class="input-group-append">
-                        <button id="buscar_ben" type="submit" class="btn btn-primary">Buscar</button>
+                        <button id="buscar_ben" type="submit" class="btn btn-primary">Buscar
+                        <img src="icons/buscar.gif" alt="buscar" width="20" height="20">
+                        </button>
                     </div>
                 </div>
             </form>
@@ -68,10 +77,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <th>Código</th>
                             <th>Nombre</th> 
-                            <th>Teléfono 1</th>
-                            <th>Teléfono 2</th>
+                            <th>Teléfono Prin.</th>
+                            <th>Teléfono Sec.</th>
                             <th>Fecha de Nac.</th>
                             <th></th>
+                            <th>Agregar Fotos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,10 +93,24 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['Telefono2_ben'] ?></td>
                                 <td><?php echo $dat['Fechanac_ben_for'] ?></td>
                                 <td>
-                                <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Modificar</button>
+                                <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Modificar
+                                <img src="icons/modificar.gif" alt="modificar" width="20" height="20">
+                                </button>
                                 </td>
                                 <td>
-                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="AgregarFoto" type="button" class="btn btn-success btn-sm">Agregar Fotos</button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>">
+                                <button id="espiritual"  type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Espiritual" class="btn btn-success">                                 
+                                <img src="icons/espiritual.gif" alt="Espiritual" width="20" height="20">
+                                </button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="fisica" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Física" class="btn btn-success">
+                                <img src="icons/fisica.gif" alt="fisica" width="20" height="20">
+                                </button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="cognitiva" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cognitiva" class="btn btn-success">
+                                <img src="icons/cognitiva.gif" alt="cognitiva" width="20" height="20">
+                                </button></a>
+                                <a href="foto.php?id=<?php echo $dat['Codigo_ben']; ?>"><button id="socioemocional" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Socioemocional" class="btn btn-success">
+                                <img src="icons/socioemocional.gif" alt="socioemocional" width="20" height="20">
+                                </button></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -119,9 +143,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<script>
-
-</script>
 
 <script src="js/upload.js"></script>
 <?php include 'modal.php'; ?>

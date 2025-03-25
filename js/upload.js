@@ -123,3 +123,21 @@ function validarTelefono(telefono) {
     return ['2', '6', '7'].includes(primerDigito);
 }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Manejar clics en los botones de Agregar Fotos
+    const botonesAgregarFoto = document.querySelectorAll('.agregar-foto');
+    botonesAgregarFoto.forEach(boton => {
+        boton.addEventListener('click', function () {
+            const codigoBeneficiario = this.getAttribute('data-codigo'); // Obtener el código del beneficiario
+            const area = this.getAttribute('data-area'); // Obtener el área seleccionada
+            if (codigoBeneficiario && area) {
+                // Redirigir a foto.php con los parámetros necesarios
+                window.location.href = `foto.php?id=${encodeURIComponent(codigoBeneficiario)}&area=${encodeURIComponent(area)}`;
+            } else {
+                console.error("Código de beneficiario o área no válidos.");
+                alert("Error: Código de beneficiario o área no válidos.");
+            }
+        });
+    });
+});

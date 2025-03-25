@@ -25,22 +25,25 @@
 
 // <!-- Creación de documento de Word -->
 // <!-- Exportar documento Word -->
-
-    $(function () {
-        if (Convertir()) {
-            $("#content").wordExport();
-            Swal.fire({
-                icon: 'success',
-                title: '¡Éxito!',
-                text: 'El documento se ha generado correctamente.',
-            });
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error al validar los datos.',
-            });
-        }
+    $(document).ready(function () {
+        // Asociar el evento click al botón "Generar Documento"
+        $(".ExportToWord").off("click").on("click", function (event) {
+            event.preventDefault(); // Evitar el comportamiento predeterminado del botón
+            if (Convertir()) {
+                $("#content").wordExport();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'El documento se ha generado correctamente.',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al validar los datos.',
+                });
+            }
+        });
     });
 
     function Convertir()

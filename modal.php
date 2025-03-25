@@ -17,11 +17,11 @@
             <input disabled type="text" class="form-control" id="apellidos-ben">
           </div>
           <div class="form-group">
-            <label for="telefono1-ben" class="col-form-label">Teléfono 1:</label>
+            <label for="telefono1-ben" class="col-form-label">Teléfono Principal:</label>
             <input type="text" class="form-control" id="telefono1-ben">
           </div>
           <div class="form-group">
-            <label for="telefono2-ben" class="col-form-label">Teléfono 2:</label>
+            <label for="telefono2-ben" class="col-form-label">Teléfono Secundario:</label>
             <input type="text" class="form-control" id="telefono2-ben">
           </div>
         </form>

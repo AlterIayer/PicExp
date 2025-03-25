@@ -1,10 +1,10 @@
 <?php
 include 'head.php';
 include 'db/conexion.php';
+include 'navbar.php';
 
 ?>
 <?php
-include 'navbar.php';
 ?>
 <link rel="stylesheet" href="css/stylefoto.css">
 <link rel="stylesheet" href="css/style.css">
@@ -122,10 +122,10 @@ include 'navbar.php';
     </div>
     <!-- Botones adicionales -->
     <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
-        <button class="ExportToWord btn btn-success btn-lg">Generar documento</button>
+    <button class="ExportToWord btn btn-success btn-lg">Generar documento</button>
     </div>
 
 
+    <script src="js/scriptsfoto.js"></script>
     <?php include 'footer.php'; ?>
     
-    <script src="js/scriptsfoto.js"></script>
