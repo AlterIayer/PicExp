@@ -22,6 +22,7 @@
     setupImagePreview('fileInput2', 'preview2');
     setupImagePreview('fileInput3', 'preview3');
     setupImagePreview('fileInput4', 'preview4');
+    setupImagePreview('fileInput5', 'preview5');
 
 // <!-- Creación de documento de Word -->
 // <!-- Exportar documento Word -->
@@ -61,13 +62,13 @@
         
         //Eliminar select y obtener sus datos.
         const mes1 = document.getElementById("select_mes1");
-        const textmes1 = mes1.options[mes1.selectedIndex].text;
+        const textmes1 = mes1.options[mes1.selectedIndex].text + " - 2025";
         const mes2 = document.getElementById("select_mes2");
-        const textmes2 = mes2.options[mes2.selectedIndex].text;
+        const textmes2 = mes2.options[mes2.selectedIndex].text + " - 2025";
         const mes3 = document.getElementById("select_mes3");
-        const textmes3 = mes3.options[mes3.selectedIndex].text;
+        const textmes3 = mes3.options[mes3.selectedIndex].text + " - 2025";
         const mes4 = document.getElementById("select_mes4");
-        const textmes4 = mes4.options[mes4.selectedIndex].text;
+        const textmes4 = mes4.options[mes4.selectedIndex].text + " - 2025";
         document.getElementById("txt_mes1").style.visibility = "visible";
         document.getElementById("txt_mes2").style.visibility = "visible";
         document.getElementById("txt_mes3").style.visibility = "visible";
@@ -105,3 +106,13 @@
             return false;
         }
     }
+
+    document.getElementById('showPanel1').addEventListener('click', function() {
+        document.getElementById('panel1').classList.remove('d-none');
+        document.getElementById('panel2').classList.add('d-none');
+    });
+
+    document.getElementById('showPanel2').addEventListener('click', function() {
+        document.getElementById('panel2').classList.remove('d-none');
+        document.getElementById('panel1').classList.add('d-none');
+    });
