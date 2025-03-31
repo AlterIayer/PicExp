@@ -97,16 +97,16 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </td>
                                 <td>
                                     <!-- Botones de Agregar Fotos -->
-                                    <button id="espiritual" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Espiritual" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area="espiritual">
+                                    <button id="espiritual" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Espiritual" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area=1>
                                         <img src="icons/espiritual.gif" alt="Espiritual" width="20" height="20">
                                     </button>
-                                    <button id="fisica" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Física" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area="fisica">
+                                    <button id="fisica" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Física" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area=3>
                                         <img src="icons/fisica.gif" alt="Física" width="20" height="20">
                                     </button>
-                                    <button id="cognitiva" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cognitiva" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area="cognitiva">
+                                    <button id="cognitiva" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cognitiva" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area=2>
                                         <img src="icons/cognitiva.gif" alt="Cognitiva" width="20" height="20">
                                     </button>
-                                    <button id="socioemocional" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Socioemocional" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area="socioemocional">
+                                    <button id="socioemocional" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Socioemocional" class="btn btn-success agregar-foto" data-codigo="<?php echo $dat['Codigo_ben']; ?>" data-area=4>
                                         <img src="icons/socioemocional.gif" alt="Socioemocional" width="20" height="20">
                                     </button>
                                 </td>

@@ -5,6 +5,7 @@ include 'navbar.php';
 
 // Obtener el ID del beneficiario desde la URL
 $idBeneficiario = isset($_GET['id']) ? $_GET['id'] : null;
+$area = isset($_GET['area']) ? $_GET['area'] : null;
 
 // Validar si se proporcionó un ID
 if (!$idBeneficiario) {
@@ -46,7 +47,8 @@ $codigoBeneficiario = $data['Codigo_ben'];
     <center>
     <div class="text-center mb-4">
         <h2><?php echo htmlspecialchars($nombreCompleto); ?></h2>
-        <h3>Código: <?php echo htmlspecialchars($codigoBeneficiario); ?></h3>
+        <h3 id="codigo_ben">Código: <?php echo htmlspecialchars($codigoBeneficiario); ?></h3>
+        <h3 id="area_ben" style="visibility:hidden" >Área: <?php echo htmlspecialchars($area); ?></h3> 
     </div>
     </center>
 
@@ -279,6 +281,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
 <!-- Botones adicionales -->
 <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
     <button class="ExportToWord btn btn-success btn-lg">Generar documento</button>
+    <button id="guardarFotos" class="btn btn-primary btn-lg">Guardar Fotos</button>
 </div>
 
 <?php include 'footer.php'; ?>

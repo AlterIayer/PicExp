@@ -1,4 +1,112 @@
- // Función genérica para cargar y previsualizar imágenes
+document.addEventListener("DOMContentLoaded", function () {
+    const guardarFotos = document.getElementById("guardarFotos");
+
+    // Mapeo de áreas a valores numéricos
+    const areaMapping = {
+        "espiritual": 1,
+        "fisica": 2,
+        "cognitiva": 3,
+        "socioemocional": 4,
+    };
+
+    guardarFotos.addEventListener("click", function () {
+        Convertir();
+        const fotos = [];
+        const totalImagenes = 4; // Número total de imágenes (ajusta según sea necesario)
+
+        for (let i = 1; i <= totalImagenes; i++) {
+            // Imprime los valores para verificar
+            const preview = document.getElementById(`preview${i}`);
+            // Obtén el valor del elemento con id 'txt_tema'
+            const temaelement = document.getElementById(`txt_tema${i}`);
+            const tema = temaelement.textContent.replace("Tema: ", "");
+            // Obtén el valor del elemento con id 'txt_mes'
+            const meselement = document.getElementById(`txt_mes${i}`);
+            const mes = meselement.textContent.replace("Mes: ", "");
+            // Obtén el valor del elemento con id 'codigo_ben'
+            let codigoBenElement = document.getElementById("codigo_ben");
+            let codigoBeneficiario = codigoBenElement.textContent.replace("Código: ", "");
+            // Obtén el valor del elemento con id 'area_ben'
+            const areaBenElement = document.getElementById("area_ben");
+            const area = areaBenElement.textContent.replace("Área: ", "");
+            console.log(fotos.length);
+
+            if (!area) {
+                console.error("Área no válida:", area);
+                continue; // Saltar si el área no es válida
+            }
+
+            if (preview.src && preview.src !== "") {
+                // Generar un nombre único para la imagen
+                const timestamp = Date.now(); // Timestamp actual
+                const extension = "jpg"; // Extensión predeterminada
+                const nombreUnico = `${codigoBeneficiario}_${timestamp}.${extension}`;
+
+                // Si la imagen tiene una URL válida, agregarla al arreglo
+                fotos.push({
+                    Foto_foto: nombreUnico, // Guardar el nombre único
+                    Tema_foto: tema,
+                    Fecha_foto: mes,
+                    Codigo_ben: codigoBeneficiario,
+                    Id_area: area, // Usar el valor numérico del área
+                    Id_sec: 1, // Valor fijo
+                    Id_an: 1   // Valor fijo
+                });
+            }
+        }
+
+        if (fotos.length === 0) {
+            alert("No hay imágenes válidas para guardar.");
+            return;
+        }
+
+        // Enviar datos al servidor mediante AJAX
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "guardar_fotos.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                try {
+                    const respuesta = JSON.parse(xhr.responseText);
+                    if (respuesta.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "¡Éxito!",
+                            text: "Las fotos se han guardado correctamente.",
+                        }).then(() => {
+                            location.reload(); // Recargar la página
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: respuesta.error,
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error al parsear JSON:", error.message);
+                }
+            }
+        };
+        xhr.send(JSON.stringify({ fotos }));
+    });
+
+    // Función para mostrar la vista previa de la imagen
+    window.mostrarVistaPrevia = function (indice) {
+        const input = document.getElementById(`fileInput${indice}`);
+        const preview = document.getElementById(`preview${indice}`);
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+});
+ 
+ // Función genérica para cargar y previsualizar imágenes---------------------------------
     function setupImagePreview(inputId, imgId) {
         const fileInput = document.getElementById(inputId);
         const imgPreview = document.getElementById(imgId);
