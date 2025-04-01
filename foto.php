@@ -56,7 +56,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
         <tr>
         <td style="width: 50%; padding: 10px; text-align: center; vertical-align: top;">
                 <label id="btn1" for="fileInput1" class="btn btn-primary btn-sm">Cargar</label>
-                <input type="file" id="fileInput1" accept="image/*" style="display:none;">
+                <input type="file" id="fileInput1" onchange="mostrarVistaPrevia(1)" accept="image/*" style="display:none;">
                 <img id="preview1" src="" alt="" width="215" height="290"><br>
                 <center>
                     <input id="tema1" class="form-control form-control-sm" type="text" placeholder="Tema:" aria-label=".form-control-sm">
@@ -81,7 +81,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
             <td></td>
             <td style="width: 50%; padding: 10px; text-align: center; vertical-align: top;">
                 <label id="btn2" for="fileInput2" class="btn btn-primary btn-sm">Cargar</label>
-                <input type="file" id="fileInput2" accept="image/*" style="display:none;">
+                <input type="file" id="fileInput2" onchange="mostrarVistaPrevia(2)" accept="image/*" style="display:none;">
                 <img id="preview2" src="" alt="" width="215" height="290"><br>
                 <center>
                     <input id="tema2" class="form-control form-control-sm" type="text" placeholder="Tema:" aria-label=".form-control-sm">
@@ -107,7 +107,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
         <tr>
         <td style="width: 50%; padding: 10px; text-align: center; vertical-align: top;">
                 <label id="btn3" for="fileInput3" class="btn btn-primary btn-sm">Cargar</label>
-                <input type="file" id="fileInput3" accept="image/*" style="display:none;">
+                <input type="file" id="fileInput3" onchange="mostrarVistaPrevia(3)" accept="image/*" style="display:none;">
                 <img id="preview3" src="" alt="" width="215" height="290"><br>
                 <center>
                     <input id="tema3" class="form-control form-control-sm" type="text" placeholder="Tema:" aria-label=".form-control-sm">
@@ -132,7 +132,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
             <td></td>
             <td style="width: 50%; padding: 10px; text-align: center; vertical-align: top;">
                 <label id="btn4" for="fileInput4" class="btn btn-primary btn-sm">Cargar</label>
-                <input type="file" id="fileInput4" accept="image/*" style="display:none;">
+                <input type="file" id="fileInput4" onchange="mostrarVistaPrevia(4)" accept="image/*" style="display:none;">
                 <img id="preview4" src="" alt="" width="215" height="290"><br>
                 <center>
                     <input id="tema4" class="form-control form-control-sm" type="text" placeholder="Tema:" aria-label=".form-control-sm">
@@ -175,7 +175,7 @@ $codigoBeneficiario = $data['Codigo_ben'];
         <tr>
         <td style="width: 50%; padding: 10px; text-align: center; vertical-align: top;">
                 <label id="btn5" for="fileInput5" class="btn btn-primary btn-sm">Cargar</label>
-                <input type="file" id="fileInput5" accept="image/*" style="display:none;">
+                <input type="file" id="fileInput5" onchange="mostrarVistaPrevia(5)" accept="image/*" style="display:none;">
                 <img id="preview5" src="" alt="" width="215" height="290"><br>
                 <center>
                     <input id="tema5" class="form-control form-control-sm" type="text" placeholder="Tema:" aria-label=".form-control-sm">
