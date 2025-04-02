@@ -91,7 +91,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['Telefono2_ben'] ?></td>
                                 <td><?php echo $dat['Fechanac_ben_for'] ?></td>
                                 <td>
-                                    <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Modificar
+                                    <button id="Modificar" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-codigo="<?php echo $dat['Codigo_ben']; ?>">Editar
                                         <img src="icons/modificar.gif" alt="modificar" width="20" height="20">
                                     </button>
                                 </td>
