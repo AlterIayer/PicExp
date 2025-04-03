@@ -1,18 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const guardarFotos = document.getElementById("guardarFotos");
-    const panel1 = document.getElementById("showPanel1");
-    const panel2 = document.getElementById("showPanel2");
-    const seccionselect = 0;
-
-    // Función para mostrar la vista previa de la imagen
-    panel1.addEventListener("click", function () {
-        seccionselect = 1;
-    });
-
-    // Función para mostrar la vista previa de la imagen
-    panel2.addEventListener("click", function () {
-        seccionselect = 2;
-    });
 
     // Función para mostrar la vista previa de la imagen
     window.mostrarVistaPrevia = function (indice) {
@@ -75,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Fecha_foto: mes,
                     Codigo_ben: codigoBeneficiario,
                     Id_area: area, // Usar el valor numérico del área
-                    Id_sec: seccionselect, // Valor fijo
+                    Id_sec: 1, // Valor fijo
                     Id_an: 1   // Valor fijo
                 });
             } 
