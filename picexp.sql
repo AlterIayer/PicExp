@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2025 a las 00:01:47
+-- Tiempo de generación: 03-04-2025 a las 01:00:14
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -243,6 +243,32 @@ CREATE TABLE `edades` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `foto`
+--
+
+CREATE TABLE `foto` (
+  `Id_foto` int(11) NOT NULL,
+  `Codigo_ben` varchar(11) NOT NULL,
+  `Foto1_foto` mediumtext NOT NULL,
+  `Tema1_foto` varchar(50) NOT NULL,
+  `Fecha1_foto` varchar(25) NOT NULL,
+  `Foto2_foto` mediumtext NOT NULL,
+  `Tema2_foto` varchar(50) NOT NULL,
+  `Fecha2_foto` varchar(25) NOT NULL,
+  `Foto3_foto` mediumtext NOT NULL,
+  `Tema3_foto` varchar(50) NOT NULL,
+  `Fecha3_foto` varchar(25) NOT NULL,
+  `Foto4_foto` mediumtext NOT NULL,
+  `Tema4_foto` varchar(50) NOT NULL,
+  `Fecha4_foto` varchar(25) NOT NULL,
+  `Id_area` int(11) NOT NULL,
+  `Id_seccion` int(11) NOT NULL,
+  `Id_anyo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `fotos`
 --
 
@@ -362,6 +388,15 @@ ALTER TABLE `edades`
   ADD KEY `FK_Id_usuario` (`Id_usuario`);
 
 --
+-- Indices de la tabla `foto`
+--
+ALTER TABLE `foto`
+  ADD PRIMARY KEY (`Id_foto`),
+  ADD KEY `FK_Id_area` (`Id_area`),
+  ADD KEY `FK_Id_seccion` (`Id_seccion`),
+  ADD KEY `FK_Id_anyo` (`Id_anyo`);
+
+--
 -- Indices de la tabla `fotos`
 --
 ALTER TABLE `fotos`
@@ -412,6 +447,12 @@ ALTER TABLE `areas`
 --
 ALTER TABLE `edades`
   MODIFY `Id_eda` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `foto`
+--
+ALTER TABLE `foto`
+  MODIFY `Id_foto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `fotos`
