@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalImagenesMax = 4; // Número máximo de imágenes posibles
         let totalImagenes = 0; // Contador dinámico para imágenes seleccionadas
 
-        try {
+        for (let i = 1; i <= totalImagenesMax; i++) {
             // Imprime los valores para verificar
             const preview = document.getElementById(`preview${i}`);
             // Obtén el valor del elemento con id 'txt_tema'
@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const areaBenElement = document.getElementById("area_ben");
             const area = areaBenElement.textContent.replace("Área: ", "");
 
+            if (!area) {
+                console.error("Área no válida:", area);
+                continue; // Saltar si el área no es válida
+            }
 
             // Verificar si la imagen fue seleccionada y es una cadena Base64 válida
             if (preview.src && preview.src.startsWith("data:image")) {
@@ -64,15 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
             } 
             
         }
-        catch (error) {
-            console.error("Error al parsear JSON:", error.message);
-        } 
+    
+
 
         if (fotos.length === 0) {
             alert("No hay imágenes válidas para guardar.");
             return;
         }
 
+        console.log(`Total de imágenes seleccionadas: ${totalImagenes}`); // Depuración
         // Enviar datos al servidor mediante AJAX
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "guardar_fotos.php", true);
