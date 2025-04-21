@@ -2,7 +2,7 @@
 class Conexion {
     public static function Conectar() {
         if (!defined('servidor')) {
-            define('servidor', 'localhost');
+            define('servidor', 'localhost:3307');
         }
         if (!defined('nombre_bd')) {
             define('nombre_bd', 'picexp');
