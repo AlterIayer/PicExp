@@ -16,7 +16,7 @@ if (!$idBeneficiario) {
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT Codigo_ben, Nombre_ben, Apellidos_ben FROM beneficiario WHERE Codigo_ben = :codigo";
+$consulta = "SELECT Codigo_ben, Nombre_ben, Apellidos_ben, Fechanac_ben FROM beneficiario WHERE Codigo_ben = :codigo";
 $resultado = $conexion->prepare($consulta);
 $resultado->bindParam(':codigo', $idBeneficiario, PDO::PARAM_STR); 
 $resultado->execute();
@@ -29,6 +29,7 @@ if ($resultado->rowCount() === 0) {
 $data = $resultado->fetch(PDO::FETCH_ASSOC);
 $nombreCompleto = $data['Nombre_ben'] . " " . $data['Apellidos_ben'];
 $codigoBeneficiario = $data['Codigo_ben'];
+$Fechanac_ben = $data['Fechanac_ben'];
 
 ?>
 <br>
@@ -43,7 +44,8 @@ $codigoBeneficiario = $data['Codigo_ben'];
     <div class="text-center mb-4">
         <h2><?php echo htmlspecialchars($nombreCompleto); ?></h2>
         <h3 id="codigo_ben">Código: <?php echo htmlspecialchars($codigoBeneficiario); ?></h3>
-        <h3 id="area_ben" style="visibility:hidden" >Área: <?php echo htmlspecialchars($area); ?></h3> 
+        <h3 id="area_ben" style="visibility:hidden" ><?php echo htmlspecialchars($area); ?></h3> 
+        <h3 id="Fechanac_ben" style="visibility:hidden" ><?php echo htmlspecialchars($Fechanac_ben); ?></h3> 
     </div>
     </center>
 
