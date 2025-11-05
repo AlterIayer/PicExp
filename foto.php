@@ -31,7 +31,25 @@ $nombreCompleto = $data['Nombre_ben'] . " " . $data['Apellidos_ben'];
 $codigoBeneficiario = $data['Codigo_ben'];
 $Fechanac_ben = $data['Fechanac_ben'];
 
+// Consulta para obtener las fotos del beneficiario en esa área
+$consultaFotos = "SELECT Foto_foto, Tema_foto, Fecha_foto, Id_sec FROM fotos 
+                  WHERE Codigo_ben = :codigo AND Id_area = :area";
+$resultadoFotos = $conexion->prepare($consultaFotos);
+$resultadoFotos->bindParam(':codigo', $codigoBeneficiario, PDO::PARAM_STR);
+$resultadoFotos->bindParam(':area', $area, PDO::PARAM_INT);
+$resultadoFotos->execute();
+
+// Organizar las fotos por posición
+$espacios = [1 => null, 2 => null, 3 => null, 4 => null];
+while ($foto = $resultadoFotos->fetch(PDO::FETCH_ASSOC)) {
+    $pos = (int)$foto['Id_sec'];
+    if ($pos >= 1 && $pos <= 4) {
+        $espacios[$pos] = $foto;
+    }
+}
 ?>
+
+
 <br>
 <link rel="stylesheet" href="css/stylefoto.css">
 <link rel="stylesheet" href="css/style.css">
@@ -164,3 +182,20 @@ $Fechanac_ben = $data['Fechanac_ben'];
 
 <?php include 'footer.php'; ?>
 <script src="js/scriptsfoto.js"></script>
+
+<script>
+const fotosGuardadas = <?php echo json_encode($espacios); ?>;
+
+for (let i = 1; i <= 4; i++) {
+  const foto = fotosGuardadas[i];
+  if (foto) {
+    document.getElementById(`preview${i}`).src = foto.Foto_foto;
+    document.getElementById(`tema${i}`).value = foto.Tema_foto;
+    document.getElementById(`select_mes${i}`).value = parseInt(foto.Fecha_foto);
+    document.getElementById(`txt_tema${i}`).textContent = foto.Tema_foto;
+    document.getElementById(`txt_mes${i}`).textContent = foto.Fecha_foto;
+    document.getElementById(`txt_tema${i}`).style.visibility = "visible";
+    document.getElementById(`txt_mes${i}`).style.visibility = "visible";
+  }
+}
+</script>

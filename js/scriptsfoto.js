@@ -27,11 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
     guardarFotos.addEventListener("click", function () {
         Convertir();
         const fotos = [];
-        const totalImagenesMax = 4; // Número máximo de imágenes posibles
         let totalImagenes = 0; // Contador dinámico para imágenes seleccionadas
 
         try {
-            for (let i = 1; i <= totalImagenesMax; i++) {
+            for (let i = 1; i <= 4; i++) {
             // Imprime los valores para verificar
             const preview = document.getElementById(`preview${i}`);
             // Obtén el valor del elemento con id 'txt_tema'
@@ -46,13 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Obtén el valor del elemento con id 'area_ben'
             const areaBenElement = document.getElementById("area_ben");
             const area = areaBenElement.textContent.replace("Área: ", "");
-            alert("1");
-
 
             // Verificar si la imagen fue seleccionada y es una cadena Base64 válida
             if (preview.src && preview.src.startsWith("data:image")) {
-                totalImagenes++; // Incrementar el contador de imágenes seleccionadas
 
+                const yaExiste = fotosGuardadas[i] && fotosGuardadas[i].Foto_foto === preview.src;
+                if (!yaExiste) {
                 // Agregar la imagen Base64 al arreglo
                 fotos.push({
                     Foto_foto: preview.src, // Guardar la imagen Base64
@@ -60,9 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     Fecha_foto: mes,
                     Codigo_ben: codigoBeneficiario,
                     Id_area: area, // Usar el valor numérico del área
-                    Id_sec: 1, // Valor fijo
+                    Id_sec: i, // Para darle el orden de la foto, si es primera o cuarta
                     Id_an: 1   // Valor fijo
                 });
+                alert(`No hay imágenes válidas para guardar.${fotos.Tema_foto}`);
+                alert(`No hay imágenes válidas para guardar.${fotos.Fecha_foto}`);
+                }
             } 
         }
             

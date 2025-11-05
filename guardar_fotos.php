@@ -20,11 +20,32 @@ try {
         mkdir($directorioImagenes, 0777, true); // Crear el directorio si no existe
     }
 
+    // Consulta base para insertar
     $consulta = "INSERT INTO fotos (Foto_foto, Tema_foto, Fecha_foto, Codigo_ben, Id_area, Id_sec, Id_an) 
                  VALUES (:Foto_foto, :Tema_foto, :Fecha_foto, :Codigo_ben, :Id_area, :Id_sec, :Id_an)";
     $stmt = $pdo->prepare($consulta);
 
+    // Consulta para verificar existencia
+    $consultaExiste = "SELECT COUNT(*) FROM fotos 
+                       WHERE Codigo_ben = :Codigo_ben AND Id_area = :Id_area AND Id_sec = :Id_sec";
+    $stmtExiste = $pdo->prepare($consultaExiste);
+
+    $guardadas = 0;
+    $omitidas = 0;
+
     foreach ($datos['fotos'] as $foto) {
+         // Verificar si ya existe una foto en esa posición
+        $stmtExiste->execute([
+            ':Codigo_ben' => $foto['Codigo_ben'],
+            ':Id_area' => $foto['Id_area'],
+            ':Id_sec' => $foto['Id_sec']
+        ]);
+        $existe = $stmtExiste->fetchColumn();
+
+        if ($existe > 0) {
+            $omitidas++;
+            continue; // Saltar si ya existe
+        }
         // Generar un nombre único para la imagen
         $timestamp = microtime(true) * 10000; // Timestamp único
         $extension = "jpg"; // Extensión predeterminada
@@ -40,6 +61,7 @@ try {
             if (!file_put_contents($rutaCompleta, $imagenDecodificada)) {
                 throw new Exception("Error al guardar la imagen en el sistema de archivos.");
             }
+            
         } else {
             throw new Exception("Formato de imagen no válido.");
         }
@@ -50,12 +72,13 @@ try {
         $stmt->bindParam(":Fecha_foto", $foto['Fecha_foto'], PDO::PARAM_STR);
         $stmt->bindParam(":Codigo_ben", $foto['Codigo_ben'], PDO::PARAM_STR);
         $stmt->bindParam(":Id_area", $foto['Id_area'], PDO::PARAM_INT);
-        $stmt->bindValue(":Id_sec", 1, PDO::PARAM_INT); // Valor fijo
+        $stmt->bindValue(":Id_sec", $foto['Id_sec'], PDO::PARAM_INT); // Valor fijo
         $stmt->bindValue(":Id_an", 1, PDO::PARAM_INT);  // Valor fijo
 
         if (!$stmt->execute()) {
             throw new Exception("Error al insertar los datos en la base de datos.");
-        }
+        }        
+        $guardadas++;
     }
 
     echo json_encode(["success" => true]);
