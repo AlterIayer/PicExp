@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let totalImagenes = 0; // Contador dinámico para imágenes seleccionadas
 
         try {
+            for (let i = 1; i <= totalImagenesMax; i++) {
             // Imprime los valores para verificar
             const preview = document.getElementById(`preview${i}`);
             // Obtén el valor del elemento con id 'txt_tema'
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Obtén el valor del elemento con id 'area_ben'
             const areaBenElement = document.getElementById("area_ben");
             const area = areaBenElement.textContent.replace("Área: ", "");
+            alert("1");
 
 
             // Verificar si la imagen fue seleccionada y es una cadena Base64 válida
@@ -62,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Id_an: 1   // Valor fijo
                 });
             } 
+        }
             
         }
         catch (error) {
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } 
 
         if (fotos.length === 0) {
-            alert("No hay imágenes válidas para guardar.");
+            alert(`No hay imágenes válidas para guardar.${fotos.length}`);
             return;
         }
 
